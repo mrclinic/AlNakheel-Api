@@ -15,7 +15,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
     super();
 
     // Middleware for all queries
-    this.$use(async (params, next) => {
+    (this as any).$use(async (params, next) => {
       try {
         return await next(params);
       } catch (error) {
