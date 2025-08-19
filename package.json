@@ -8,7 +8,7 @@
     "start:dev": "nest start --watch",
     "build": "tsc -p tsconfig.build.json",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:migrate": "prisma migrate deploy",
     "prisma:seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
