@@ -1,5 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { PrismaClient, Prisma } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { HttpStatus } from '@nestjs/common';
 import { BusinessException } from '../common/exceptions/business.exception';
 
@@ -14,14 +14,14 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   constructor() {
     super();
 
-    // Middleware for all queries
-    (this as any).$use(async (params, next) => {
+    /* // Middleware for all queries
+    this.$use(async (params, next) => {
       try {
         return await next(params);
       } catch (error) {
         this.handlePrismaError(error);
       }
-    });
+    }); */
   }
 
   private handlePrismaError(error: unknown): never {
