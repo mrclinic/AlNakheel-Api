@@ -1,5 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
 import { HttpStatus } from '@nestjs/common';
 import { BusinessException } from '../common/exceptions/business.exception';
 
