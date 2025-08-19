@@ -2,7 +2,7 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { PrismaService } from '../../prisma/prisma.service';
 import { ProductFilterQueryDto, ProductWithRelatedDto, RemoveRelatedProductsBulkDto } from './dto/product.with.related.dto';
 import { AddRelatedProductsBulkDto } from './dto/related-product.dto';
-import { PrismaFilterService } from 'src/common/prisma-filters';
+import { PrismaFilterService } from '../../common/prisma-filters';
 
 @Injectable()
 export class ProductsService {

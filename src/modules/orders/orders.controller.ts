@@ -3,8 +3,8 @@ import { Controller, Post, Body, Get, Query, UseGuards } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { CreateOrderDto } from './dto/create.order.dto';
-import { Roles } from 'src/common/roles.decorator';
-import { RolesGuard } from 'src/common/roles.guard';
+import { Roles } from '../../common/roles.decorator';
+import { RolesGuard } from '../../common/roles.guard';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('orders')
