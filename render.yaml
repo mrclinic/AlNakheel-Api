@@ -1,24 +1,20 @@
-# render.yaml
-
 services:
-  # تطبيق NestJS الرئيسي
   - type: web
-    name: AlNakheel-Api BackEnd
+    name: alnakheel-api
     env: node
     plan: free
-    region: Oregon (US West)  # اختر المنطقة الأقرب لمستخدميك
-    
-    # أوامر البناء
+    region: oregon
+
     buildCommand: |
       npm ci
       npx prisma generate
       npx prisma migrate deploy
       npm run build
-    
-    # أمر التشغيل
+
     startCommand: npm run start
-    
-    # المتغيرات البيئية
+
+    postDeployCommand: npm run prisma:seed
+
     envVars:
       - key: DATABASE_URL
         fromService:
@@ -27,35 +23,9 @@ services:
           property: connectionString
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 5432
       - key: PRISMA_CLIENT_ENGINE_TYPE
         value: binary
-    
-    # إعدادات الصحة
+    # Notice: PORT is not hardcoded
+
     healthCheckPath: /api/health
     autoDeploy: true
-    
-    # موارد الخادم
-    numInstances: 1
-    disk:
-      name: data
-      mountPath: /data
-      sizeGB: 1
-
-  # قاعدة البيانات PostgreSQL
-  - type: postgres
-    name: alnakheel
-    plan: free
-    region: Oregon (US West)
-    databaseName: alnakheel
-    user: alnakheel_user
-    ipAllowList: []  # يسمح بالوصول من الخدمات الأخرى فقط
-    postgresMajorVersion: 15
-
-# إعدادات إضافية للقاعدة البيانات
-databases:
-  - name: alnakheel
-    plan: free
-    databaseName: alnakheel
-    user: alnakheel_user
