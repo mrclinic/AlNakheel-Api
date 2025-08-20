@@ -1,4 +1,4 @@
--- CreateTable
+-- CreateTable 
 CREATE TABLE "public"."Order" (
     "id" SERIAL NOT NULL,
     "firstName" TEXT NOT NULL,

@@ -1,4 +1,4 @@
--- CreateEnum
+-- CreateEnum 
 CREATE TYPE "public"."Role" AS ENUM ('CUSTOMER', 'ADMIN');
 
 -- CreateTable
