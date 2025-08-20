@@ -8,11 +8,10 @@ services:
     buildCommand: |
       npm ci
       npx prisma generate
-      npx prisma migrate deploy
+      npx prisma migrate deploy || npx prisma db push
       npm run build
 
     startCommand: npm run start
-
     postDeployCommand: npm run prisma:seed
 
     envVars:
@@ -35,5 +34,5 @@ services:
     region: oregon
     databaseName: alnakheel
     user: alnakheel_user
-    ipAllowList: [] # allow only internal access
     postgresMajorVersion: 15
+    ipAllowList: []
