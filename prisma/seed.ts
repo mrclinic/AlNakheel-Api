@@ -113,7 +113,7 @@ async function main() {
     ],
   }); */
 
-  console.log({ admin: admin.email, customer: customer.email, product: p1.name_en });
+  //console.log({ admin: admin.email, customer: customer.email, product: p1.name_en });
 }
 
 main()
