@@ -25,7 +25,15 @@ services:
         value: production
       - key: PRISMA_CLIENT_ENGINE_TYPE
         value: binary
-    # Notice: PORT is not hardcoded
 
     healthCheckPath: /api/health
     autoDeploy: true
+
+  - type: postgres
+    name: alnakheel
+    plan: free
+    region: oregon
+    databaseName: alnakheel
+    user: alnakheel_user
+    ipAllowList: [] # allow only internal access
+    postgresMajorVersion: 15
