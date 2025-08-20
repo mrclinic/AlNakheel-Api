@@ -19,6 +19,7 @@ export class RegisterDto {
 
   @ApiProperty({ description: 'User Role - when no role provide --> By Default will be \'ADMIN\'', enum: Role, required: false })
   @IsEnum(Role)
+  @IsOptional()
   role?: Role;
 }
 
