@@ -27,5 +27,6 @@ export class CreateCategoryDto {
 
     @ApiProperty({ description: 'Category Parent', required: false })
     @IsInt()
+    @IsOptional()
     parentId?: number;
 }
