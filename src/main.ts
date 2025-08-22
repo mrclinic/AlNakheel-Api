@@ -6,13 +6,19 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as express from 'express'; */
 import * as dotenv from 'dotenv';
 import { GlobalExceptionFilter } from './common/all-exceptions.filter';
-
+import * as bodyParser from 'body-parser'; // Import body-parser
 // Loads .env file contents into process.env by default
 dotenv.config();
 
 async function bootstrap() {
   // Creates an instance of NestApplication.
   const app = await NestFactory.create(AppModule, { cors: true });
+
+  // Increase the JSON body parser limit
+  app.use(bodyParser.json({ limit: '50mb' })); // Adjust '50mb' as needed
+  // Increase the URL-encoded body parser limit
+  app.use(bodyParser.urlencoded({ limit: '50mb', extended: true })); // Adjust '50mb' as needed
+
 
   // Apply global filter
   app.useGlobalFilters(new GlobalExceptionFilter());
