@@ -4,97 +4,9 @@ import * as bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 async function main() {
-  const adminPass = await bcrypt.hash('admin123', 10);
-  const userPass = await bcrypt.hash('customer123', 10);
-
-  /* const admin = await prisma.user.upsert({
-    where: { email: 'admin@local.com' },
-    update: {
-      email: 'admin@local.com',
-    },
-    create: {
-      email: 'admin@local.com',
-      passwordHash: adminPass,
-      name: 'Admin',
-      role: 'ADMIN',
-    },
-  });
-
-  const customer = await prisma.user.upsert({
-    where: { email: 'user@local.com' },
-    update: {
-      email: 'user@local.com',
-    },
-    create: {
-      email: 'user@local.com',
-      passwordHash: userPass,
-      name: 'Customer',
-      role: 'CUSTOMER',
-    },
-  });
 
 
-
-  await prisma.brand.upsert({
-    where: { name_en: 'UNOX' },
-    update: {},
-    create: {
-      name_en: 'UNOX',
-      name_ar: 'يونُكس'
-    },
-  });
-  await prisma.brand.upsert({
-    where: { name_en: 'TECNODOM' },
-    update: {},
-    create: {
-      name_en: 'TECNODOM',
-      name_ar: 'تكنودوم'
-    },
-  });
-  await prisma.brand.upsert({
-    where: { name_en: 'FABBRINI' },
-    update: {},
-    create: {
-      name_en: 'FABBRINI',
-      name_ar: 'فابريني'
-    },
-  });
-
-  await prisma.brand.upsert({
-    where: { name_en: 'CUNILL' },
-    update: {},
-    create: {
-      name_en: 'CUNILL',
-      name_ar: 'كونيل'
-    },
-  });
-  await prisma.brand.upsert({
-    where: { name_en: 'COMENDA' },
-    update: {},
-    create: {
-      name_en: 'COMENDA',
-      name_ar: 'كوميندا'
-    },
-  });
-  await prisma.brand.upsert({
-    where: { name_en: 'ROBOT COUPE' },
-    update: {},
-    create: {
-      name_en: 'ROBOT COUPE',
-      name_ar: 'روبوت كوبيه'
-    },
-  });
-
-
-  const cat = await prisma.category.upsert({
-    where: { name_en: 'kitchen' },
-    update: {},
-    create: {
-      name_en: 'Kitchen',
-      name_ar: 'المطبخ'
-    },
-  });
-
+  /* 
   const p1 = await prisma.product.upsert({
     where: { name_en: 'olive-oil-1l' },
     update: {},
@@ -119,110 +31,342 @@ async function main() {
 
 
   ///////////parent categories//////
-  /* await prisma.category.upsert({
-    where: { name_en: 'Bakery Equipment' },
-    update: {},
-    create: {
-      name_en: 'Bakery Equipment',
-      name_ar: 'معدات المخابز'
-    },
-  });
-  await prisma.category.upsert({
-    where: { name_en: 'Coffee & Tea Machines' },
-    update: {},
-    create: {
-      name_en: 'Coffee & Tea Machines',
-      name_ar: 'آلات القهوة والشاي'
-    },
-  });
-  await prisma.category.upsert({
-    where: { name_en: 'Coldline' },
-    update: {},
-    create: {
-      name_en: 'Coldline',
-      name_ar: 'كولدلاين'
-    },
-  });
-  await prisma.category.upsert({
-    where: { name_en: 'Cooking Line' },
-    update: {},
-    create: {
-      name_en: 'Cooking Line',
-      name_ar: 'خط الطبخ'
-    },
-  });
-  await prisma.category.upsert({
-    where: { name_en: 'Dishwasher Machine' },
-    update: {},
-    create: {
-      name_en: 'Dishwasher Machine',
-      name_ar: 'غسالة الصحون'
-    },
-  });
-
-  await prisma.category.upsert({
-    where: { name_en: 'Food Packing Machine' },
-    update: {},
-    create: {
-      name_en: 'Food Packing Machine',
-      name_ar: 'آلة تعبئة وتغليف المواد الغذائية'
-    },
-  });
-
-  await prisma.category.upsert({
-    where: { name_en: 'Food Processors' },
-    update: {},
-    create: {
-      name_en: 'Food Processors',
-      name_ar: 'معالجات الطعام'
-    },
-  });
-  await prisma.category.upsert({
-    where: { name_en: 'Food Warmers' },
-    update: {},
-    create: {
-      name_en: 'Food Warmers',
-      name_ar: 'أجهزة تدفئة الطعام'
-    },
-  });
-  await prisma.category.upsert({
-    where: { name_en: 'Juice Makers' },
-    update: {},
-    create: {
-      name_en: 'Juice Makers',
-      name_ar: 'صانعي العصير'
-    },
-  });
-  await prisma.category.upsert({
-    where: { name_en: 'Kitchen Accessories' },
-    update: {},
-    create: {
-      name_en: 'Kitchen Accessories',
-      name_ar: 'إكسسوارات المطبخ'
-    },
-  });
-  await prisma.category.upsert({
-    where: { name_en: 'Snacks Equipment' },
-    update: {},
-    create: {
-      name_en: 'Snacks Equipment',
-      name_ar: 'معدات الوجبات الخفيفة'
-    },
-  });
-
-
-  await prisma.category.upsert({
-    where: { name_en: 'Stainless Steel Items' },
-    update: {},
-    create: {
-      name_en: 'Stainless Steel Items',
-      name_ar: 'عناصر الفولاذ المقاوم للصدأ'
-    },
-  }); */
-
+  /* seedParentCategories() */
 
   /////sub categories/////////////
+  /* seedSubCategories() */
 
+  /////brands//////
+  /* seedBrands(); */
+
+  /////users//////
+  /* seedUsers(); */
+
+}
+
+main()
+  .catch((e) => console.error(e))
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
+
+
+async function seedBrands() {
+  await prisma.brand.upsert({
+    where: { name_en: 'BERJAYA' },
+    update: {},
+    create: {
+      name_en: "BERJAYA",
+      name_ar: "بيرجايا",
+      description_en: "A Malaysian brand known for commercial kitchen and refrigeration equipment.",
+      description_ar: "علامة تجارية ماليزية معروفة بمعدات المطابخ التجارية والتبريد.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'MENUMASTER' },
+    update: {},
+    create: {
+      name_en: "MENUMASTER",
+      name_ar: "مينوماستر",
+      description_en: "Specializes in commercial microwave ovens and foodservice equipment.",
+      description_ar: "متخصصة في أفران الميكروويف التجارية ومعدات خدمات الطعام.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'BREMA' },
+    update: {},
+    create: {
+      name_en: "BREMA",
+      name_ar: "بريما",
+      description_en: "Italian manufacturer of professional ice makers.",
+      description_ar: "شركة إيطالية مصنّعة لماكينات صنع الثلج الاحترافية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'TECNODOM' },
+    update: {},
+    create: {
+      name_en: "TECNODOM",
+      name_ar: "تيكنودوم",
+      description_en: "Produces professional kitchen equipment including refrigeration and ovens.",
+      description_ar: "تنتج معدات المطابخ الاحترافية بما في ذلك التبريد والأفران.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: "BERTO'S" },
+    update: {},
+    create: {
+      name_en: "BERTO'S",
+      name_ar: "بيرتوس",
+      description_en: "Italian brand of professional cooking ranges and kitchen solutions.",
+      description_ar: "علامة تجارية إيطالية لمواقد الطهي الاحترافية وحلول المطابخ.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'COMENDA' },
+    update: {},
+    create: {
+      name_en: "COMENDA",
+      name_ar: "كوميندا",
+      description_en: "Specializes in dishwashing systems for commercial kitchens.",
+      description_ar: "متخصصة في أنظمة غسيل الصحون للمطابخ التجارية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'Cunill' },
+    update: {},
+    create: {
+      name_en: "Cunill",
+      name_ar: "كونيل",
+      description_en: "Known for manufacturing coffee grinders and bar equipment.",
+      description_ar: "معروفة بتصنيع مطاحن القهوة ومعدات المقاهي.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'DUKERS' },
+    update: {},
+    create: {
+      name_en: "DUKERS",
+      name_ar: "دوكرز",
+      description_en: "Supplies commercial refrigeration and kitchen equipment.",
+      description_ar: "تقدم معدات التبريد والمطابخ التجارية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'FABRINI' },
+    update: {},
+    create: {
+      name_en: "FABRINI",
+      name_ar: "فابريني",
+      description_en: "Provides professional kitchen equipment solutions.",
+      description_ar: "توفر حلول معدات المطابخ الاحترافية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'LA CIMBALI' },
+    update: {},
+    create: {
+      name_en: "LA CIMBALI",
+      name_ar: "لا تشيمبالي",
+      description_en: "World-renowned Italian manufacturer of espresso and cappuccino machines.",
+      description_ar: "شركة إيطالية مشهورة عالميًا بصناعة ماكينات الإسبريسو والكابتشينو.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'MECNOSUD' },
+    update: {},
+    create: {
+      name_en: "MECNOSUD",
+      name_ar: "مِكنوسود",
+      description_en: "Italian producer of bakery and pizza equipment.",
+      description_ar: "شركة إيطالية منتجة لمعدات المخابز والبيتزا.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'prismafood' },
+    update: {},
+    create: {
+      name_en: "prismafood",
+      name_ar: "بريزمافود",
+      description_en: "Offers pizza ovens and food preparation equipment.",
+      description_ar: "توفر أفران البيتزا ومعدات تحضير الطعام.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'RATIONAL' },
+    update: {},
+    create: {
+      name_en: "RATIONAL",
+      name_ar: "راشونال",
+      description_en: "Global leader in combi ovens and professional cooking appliances.",
+      description_ar: "رائدة عالميًا في أفران الكومبي ومعدات الطهي الاحترافية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'robot coupe' },
+    update: {},
+    create: {
+      name_en: "robot coupe",
+      name_ar: "روبوكوپ",
+      description_en: "French manufacturer of food processors and kitchen prep equipment.",
+      description_ar: "شركة فرنسية مصنعة لمعالجات الطعام ومعدات تحضير المطابخ.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'ROLLER GRILL' },
+    update: {},
+    create: {
+      name_en: "ROLLER GRILL",
+      name_ar: "رولر جريل",
+      description_en: "Specializes in professional catering and fast-food equipment.",
+      description_ar: "متخصصة في معدات التموين الاحترافية والوجبات السريعة.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'S.A.P' },
+    update: {},
+    create: {
+      name_en: "S.A.P",
+      name_ar: "س.أ.ب",
+      description_en: "Italian company producing pizza, bakery, and catering equipment.",
+      description_ar: "شركة إيطالية تنتج معدات البيتزا والمخابز والتموين.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'SANTOS' },
+    update: {},
+    create: {
+      name_en: "SANTOS",
+      name_ar: "سانتوس",
+      description_en: "French manufacturer of commercial juicers, blenders, and coffee grinders.",
+      description_ar: "شركة فرنسية مصنّعة لماكينات العصير والخلاطات ومطاحن القهوة التجارية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'Skyrainbow' },
+    update: {},
+    create: {
+      name_en: "Skyrainbow",
+      name_ar: "سكاي رينبو",
+      description_en: "Commercial kitchen and catering equipment brand.",
+      description_ar: "علامة تجارية لمعدات المطابخ والتموين التجارية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'UNOX' },
+    update: {},
+    create: {
+      name_en: "UNOX",
+      name_ar: "أونوكس",
+      description_en: "Italian manufacturer of professional ovens and cooking solutions.",
+      description_ar: "شركة إيطالية مصنعة للأفران الاحترافية وحلول الطهي.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'Zumex' },
+    update: {},
+    create: {
+      name_en: "Zumex",
+      name_ar: "زومكس",
+      description_en: "Leader in commercial juicing machines.",
+      description_ar: "رائدة في ماكينات العصر التجارية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'Beckers' },
+    update: {},
+    create: {
+      name_en: "Beckers",
+      name_ar: "بيكرز",
+      description_en: "Known for professional kitchen equipment solutions.",
+      description_ar: "معروفة بحلول معدات المطابخ الاحترافية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'MBM' },
+    update: {},
+    create: {
+      name_en: "MBM",
+      name_ar: "إم بي إم",
+      description_en: "Italian producer of professional cooking equipment for catering.",
+      description_ar: "شركة إيطالية منتجة لمعدات الطهي الاحترافية للتموين.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'SAB' },
+    update: {},
+    create: {
+      name_en: "SAB",
+      name_ar: "ساب",
+      description_en: "Manufacturer of coffee machines and foodservice equipment.",
+      description_ar: "مصنّع لماكينات القهوة ومعدات خدمات الطعام.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'Perfex' },
+    update: {},
+    create: {
+      name_en: "Perfex",
+      name_ar: "بيرفكس",
+      description_en: "Supplies commercial kitchen solutions.",
+      description_ar: "توفر حلول المطابخ التجارية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'EMPERO' },
+    update: {},
+    create: {
+      name_en: "EMPERO",
+      name_ar: "إمبيرو",
+      description_en: "Turkish brand manufacturing commercial kitchen equipment.",
+      description_ar: "علامة تركية تصنّع معدات المطابخ التجارية.",
+      image: ""
+    }
+  });
+
+  await prisma.brand.upsert({
+    where: { name_en: 'JTC OmniBlend' },
+    update: {},
+    create: {
+      name_en: "JTC OmniBlend",
+      name_ar: "جي تي سي أومني بلند",
+      description_en: "Manufacturer of professional blenders for foodservice and hospitality.",
+      description_ar: "مصنّع لخلاطات احترافية لخدمات الطعام والضيافة.",
+      image: ""
+    }
+  });
+}
+
+
+async function seedSubCategories() {
   await prisma.category.upsert({
     where: { name_en: 'Bread Saj' },
     update: {},
@@ -1472,11 +1616,139 @@ async function main() {
       parentId: 14,
     },
   });
-
 }
 
-main()
-  .catch((e) => console.error(e))
-  .finally(async () => {
-    await prisma.$disconnect();
+
+async function seedParentCategories() {
+  await prisma.category.upsert({
+    where: { name_en: 'Bakery Equipment' },
+    update: {},
+    create: {
+      name_en: 'Bakery Equipment',
+      name_ar: 'معدات المخابز'
+    },
   });
+  await prisma.category.upsert({
+    where: { name_en: 'Coffee & Tea Machines' },
+    update: {},
+    create: {
+      name_en: 'Coffee & Tea Machines',
+      name_ar: 'آلات القهوة والشاي'
+    },
+  });
+  await prisma.category.upsert({
+    where: { name_en: 'Coldline' },
+    update: {},
+    create: {
+      name_en: 'Coldline',
+      name_ar: 'كولدلاين'
+    },
+  });
+  await prisma.category.upsert({
+    where: { name_en: 'Cooking Line' },
+    update: {},
+    create: {
+      name_en: 'Cooking Line',
+      name_ar: 'خط الطبخ'
+    },
+  });
+  await prisma.category.upsert({
+    where: { name_en: 'Dishwasher Machine' },
+    update: {},
+    create: {
+      name_en: 'Dishwasher Machine',
+      name_ar: 'غسالة الصحون'
+    },
+  });
+
+  await prisma.category.upsert({
+    where: { name_en: 'Food Packing Machine' },
+    update: {},
+    create: {
+      name_en: 'Food Packing Machine',
+      name_ar: 'آلة تعبئة وتغليف المواد الغذائية'
+    },
+  });
+
+  await prisma.category.upsert({
+    where: { name_en: 'Food Processors' },
+    update: {},
+    create: {
+      name_en: 'Food Processors',
+      name_ar: 'معالجات الطعام'
+    },
+  });
+  await prisma.category.upsert({
+    where: { name_en: 'Food Warmers' },
+    update: {},
+    create: {
+      name_en: 'Food Warmers',
+      name_ar: 'أجهزة تدفئة الطعام'
+    },
+  });
+  await prisma.category.upsert({
+    where: { name_en: 'Juice Makers' },
+    update: {},
+    create: {
+      name_en: 'Juice Makers',
+      name_ar: 'صانعي العصير'
+    },
+  });
+  await prisma.category.upsert({
+    where: { name_en: 'Kitchen Accessories' },
+    update: {},
+    create: {
+      name_en: 'Kitchen Accessories',
+      name_ar: 'إكسسوارات المطبخ'
+    },
+  });
+  await prisma.category.upsert({
+    where: { name_en: 'Snacks Equipment' },
+    update: {},
+    create: {
+      name_en: 'Snacks Equipment',
+      name_ar: 'معدات الوجبات الخفيفة'
+    },
+  });
+
+
+  await prisma.category.upsert({
+    where: { name_en: 'Stainless Steel Items' },
+    update: {},
+    create: {
+      name_en: 'Stainless Steel Items',
+      name_ar: 'عناصر الفولاذ المقاوم للصدأ'
+    },
+  });
+}
+
+async function seedUsers() {
+  const adminPass = await bcrypt.hash('admin123', 10);
+  const userPass = await bcrypt.hash('customer123', 10);
+  await prisma.user.upsert({
+    where: { email: 'admin@local.com' },
+    update: {
+      email: 'admin@local.com',
+    },
+    create: {
+      email: 'admin@local.com',
+      passwordHash: adminPass,
+      name: 'Admin',
+      role: 'ADMIN',
+    },
+  });
+
+  await prisma.user.upsert({
+    where: { email: 'user@local.com' },
+    update: {
+      email: 'user@local.com',
+    },
+    create: {
+      email: 'user@local.com',
+      passwordHash: userPass,
+      name: 'Customer',
+      role: 'CUSTOMER',
+    },
+  });
+}
+
