@@ -3,7 +3,6 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { ProductFilterQueryDto, ProductWithRelatedDto, RemoveRelatedProductsBulkDto } from './dto/product.with.related.dto';
 import { AddRelatedProductsBulkDto } from './dto/related-product.dto';
 import { PrismaFilterService } from '../../common/prisma-filters';
-
 @Injectable()
 export class ProductsService {
   private filterService: PrismaFilterService;
@@ -44,7 +43,7 @@ export class ProductsService {
   }
 
   async findById(id: number) {
-    const p = await this.prisma.product.findUnique({ where: { id } });
+    const p = await this.prisma.product.findUnique({ where: { id }, include: { category: true, brand: true } });
     if (!p) throw new NotFoundException('Product not found');
     return p;
   }
@@ -58,15 +57,20 @@ export class ProductsService {
     return this.prisma.product.delete({ where: { id } });
   }
 
-  /* async addImage(productId: number, url: string) {
-    return this.prisma.image.create({ data: { url, productId } });
-  } */
+  async addImage(id: number, url: string) {
+    await this.findById(id);
+    return this.prisma.product.update({ where: { id }, data: { imageUrl: url } });
+  }
 
   async getRelatedProducts(productId: number): Promise<ProductWithRelatedDto> {
     const product = await this.prisma.product.findUnique({
       where: { id: productId },
       include: {
-        relatedProducts: { include: { related: true } },
+        relatedProducts: {
+          include: {
+            related: true
+          }
+        }
       },
     });
 
@@ -79,7 +83,7 @@ export class ProductsService {
       description_ar: product.description_ar,
       description_en: product.description_en,
       price: product.price,
-      image: product.image,
+      imageUrl: product.imageUrl,
       relatedProducts: product.relatedProducts.map((rel) => ({
         id: rel.related.id,
         name_en: rel.related.name_en,
@@ -87,7 +91,7 @@ export class ProductsService {
         description_ar: rel.related.description_ar,
         description_en: rel.related.description_en,
         price: rel.related.price,
-        image: rel.related.image,
+        imageUrl: rel.related.imageUrl,
       })),
     };
   }

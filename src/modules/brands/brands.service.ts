@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { UpdateBrandDto } from './dto/update-brand.dto';
 import { PrismaService } from '../../prisma/prisma.service';
-
 @Injectable()
 export class BrandsService {
     constructor(private prisma: PrismaService) { }
@@ -28,5 +27,9 @@ export class BrandsService {
     async remove(id: number): Promise<void> {
         await this.findOne(id);
         await this.prisma.brand.delete({ where: { id } });
+    }
+    async addImage(id: number, url: string) {
+        await this.findOne(id);
+        return this.prisma.brand.update({ where: { id }, data: { imageUrl: url } });
     }
 }

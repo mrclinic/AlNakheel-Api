@@ -2,8 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-/* import * as path from 'path';
-import * as express from 'express'; */
+import * as path from 'path';
+import * as express from 'express';
 import * as dotenv from 'dotenv';
 import { GlobalExceptionFilter } from './common/all-exceptions.filter';
 import * as bodyParser from 'body-parser'; // Import body-parser
@@ -31,8 +31,8 @@ async function bootstrap() {
   }));
 
   // serve uploads statically
-  /* const uploadDir = process.env.UPLOAD_DIR || './uploads';
-  app.use('/uploads', express.static(path.join(process.cwd(), uploadDir))); */
+  const uploadDir = process.env.UPLOAD_DIR || './uploads';
+  app.use('/uploads', express.static(path.join(process.cwd(), uploadDir)));
 
   const config = new DocumentBuilder()
     .setTitle('AlNakheel API')

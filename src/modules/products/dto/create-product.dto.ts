@@ -24,10 +24,10 @@ export class CreateProductDto {
   @IsInt()
   price: number;
 
-  @ApiProperty({ description: 'Product image - Base64 String', required: false })
+  @ApiProperty({ description: 'Product imageUrl', required: false })
   @IsOptional()
   @IsString()
-  image?: string;
+  imageUrl?: string;
 
   @ApiProperty({ description: 'Product Category', required: false })
   @IsOptional()

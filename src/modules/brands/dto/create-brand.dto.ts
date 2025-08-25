@@ -20,8 +20,8 @@ export class CreateBrandDto {
     @IsString()
     description_ar?: string;
 
-    @ApiProperty({ description: 'Brand image - Base64 String', required: false })
+    @ApiProperty({ description: 'Brand imageUrl', required: false })
     @IsOptional()
     @IsString()
-    image?: string;
+    imageUrl?: string;
 }

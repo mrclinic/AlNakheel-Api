@@ -1,14 +1,16 @@
-import { Controller, Get, Post, Body, Param, ParseIntPipe, UseGuards, Patch, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, ParseIntPipe, UseGuards, Patch, Delete, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Roles } from '../../common/roles.decorator';
 import { RolesGuard } from '../../common/roles.guard';
 
-import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse, ApiOkResponse, ApiParam } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse, ApiOkResponse, ApiParam, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { ProductFilterQueryDto, ProductWithRelatedDto, RemoveRelatedProductsBulkDto } from './dto/product.with.related.dto';
 import { AddRelatedProductsBulkDto } from './dto/related-product.dto';
-
+import { extname } from 'path';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
 const uploadDir = process.env.UPLOAD_DIR || './uploads';
 
 @ApiTags('products')
@@ -78,12 +80,23 @@ export class ProductsController {
     return this.svc.delete(id);
   }
 
-  /*@UseGuards(JwtAuthGuard, RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN')
   @Post(':id/image')
   @ApiBearerAuth()
   @ApiConsumes('multipart/form-data')
   @ApiOperation({ summary: 'Upload product image (Admin)' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        file: {
+          type: 'string',
+          format: 'binary',
+        }
+      },
+    },
+  })
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
       destination: uploadDir,
@@ -95,11 +108,12 @@ export class ProductsController {
     }),
     limits: { fileSize: 5 * 1024 * 1024 },
   }))
-   async uploadImage(@Param('id', ParseIntPipe) id: number, @UploadedFile() file: Express.Multer.File) {
+  async uploadImage(@Param('id', ParseIntPipe) id: number, @UploadedFile() file: Express.Multer.File) {
     if (!file) throw new Error('No file uploaded');
     const url = file.path.replace(/\\/g, '/');
+    console.log(url)
     return this.svc.addImage(id, url);
-  } */
+  }
 
   @Get(':id/related')
   @ApiOperation({ summary: 'Get all related products of a product' })

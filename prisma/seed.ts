@@ -28,19 +28,19 @@ async function main() {
   //console.log({ admin: admin.email, customer: customer.email, product: p1.name_en });
 
 
-
+  /////users//////
+  seedUsers();
 
   ///////////parent categories//////
-  /* seedParentCategories() */
+  seedParentCategories()
 
   /////sub categories/////////////
-  /* seedSubCategories() */
+  seedSubCategories()
 
   /////brands//////
-  /* seedBrands(); */
+  seedBrands();
 
-  /////users//////
-  /* seedUsers(); */
+
 
 }
 
@@ -60,7 +60,6 @@ async function seedBrands() {
       name_ar: "بيرجايا",
       description_en: "A Malaysian brand known for commercial kitchen and refrigeration equipment.",
       description_ar: "علامة تجارية ماليزية معروفة بمعدات المطابخ التجارية والتبريد.",
-      image: ""
     }
   });
 
@@ -72,7 +71,7 @@ async function seedBrands() {
       name_ar: "مينوماستر",
       description_en: "Specializes in commercial microwave ovens and foodservice equipment.",
       description_ar: "متخصصة في أفران الميكروويف التجارية ومعدات خدمات الطعام.",
-      image: ""
+
     }
   });
 
@@ -84,7 +83,7 @@ async function seedBrands() {
       name_ar: "بريما",
       description_en: "Italian manufacturer of professional ice makers.",
       description_ar: "شركة إيطالية مصنّعة لماكينات صنع الثلج الاحترافية.",
-      image: ""
+
     }
   });
 
@@ -96,7 +95,7 @@ async function seedBrands() {
       name_ar: "تيكنودوم",
       description_en: "Produces professional kitchen equipment including refrigeration and ovens.",
       description_ar: "تنتج معدات المطابخ الاحترافية بما في ذلك التبريد والأفران.",
-      image: ""
+
     }
   });
 
@@ -108,7 +107,7 @@ async function seedBrands() {
       name_ar: "بيرتوس",
       description_en: "Italian brand of professional cooking ranges and kitchen solutions.",
       description_ar: "علامة تجارية إيطالية لمواقد الطهي الاحترافية وحلول المطابخ.",
-      image: ""
+
     }
   });
 
@@ -120,7 +119,7 @@ async function seedBrands() {
       name_ar: "كوميندا",
       description_en: "Specializes in dishwashing systems for commercial kitchens.",
       description_ar: "متخصصة في أنظمة غسيل الصحون للمطابخ التجارية.",
-      image: ""
+
     }
   });
 
@@ -132,7 +131,7 @@ async function seedBrands() {
       name_ar: "كونيل",
       description_en: "Known for manufacturing coffee grinders and bar equipment.",
       description_ar: "معروفة بتصنيع مطاحن القهوة ومعدات المقاهي.",
-      image: ""
+
     }
   });
 
@@ -144,7 +143,7 @@ async function seedBrands() {
       name_ar: "دوكرز",
       description_en: "Supplies commercial refrigeration and kitchen equipment.",
       description_ar: "تقدم معدات التبريد والمطابخ التجارية.",
-      image: ""
+
     }
   });
 
@@ -156,7 +155,7 @@ async function seedBrands() {
       name_ar: "فابريني",
       description_en: "Provides professional kitchen equipment solutions.",
       description_ar: "توفر حلول معدات المطابخ الاحترافية.",
-      image: ""
+
     }
   });
 
@@ -168,7 +167,7 @@ async function seedBrands() {
       name_ar: "لا تشيمبالي",
       description_en: "World-renowned Italian manufacturer of espresso and cappuccino machines.",
       description_ar: "شركة إيطالية مشهورة عالميًا بصناعة ماكينات الإسبريسو والكابتشينو.",
-      image: ""
+
     }
   });
 
@@ -180,7 +179,7 @@ async function seedBrands() {
       name_ar: "مِكنوسود",
       description_en: "Italian producer of bakery and pizza equipment.",
       description_ar: "شركة إيطالية منتجة لمعدات المخابز والبيتزا.",
-      image: ""
+
     }
   });
 
@@ -192,7 +191,7 @@ async function seedBrands() {
       name_ar: "بريزمافود",
       description_en: "Offers pizza ovens and food preparation equipment.",
       description_ar: "توفر أفران البيتزا ومعدات تحضير الطعام.",
-      image: ""
+
     }
   });
 
@@ -204,7 +203,7 @@ async function seedBrands() {
       name_ar: "راشونال",
       description_en: "Global leader in combi ovens and professional cooking appliances.",
       description_ar: "رائدة عالميًا في أفران الكومبي ومعدات الطهي الاحترافية.",
-      image: ""
+
     }
   });
 
@@ -216,7 +215,7 @@ async function seedBrands() {
       name_ar: "روبوكوپ",
       description_en: "French manufacturer of food processors and kitchen prep equipment.",
       description_ar: "شركة فرنسية مصنعة لمعالجات الطعام ومعدات تحضير المطابخ.",
-      image: ""
+
     }
   });
 
@@ -228,7 +227,7 @@ async function seedBrands() {
       name_ar: "رولر جريل",
       description_en: "Specializes in professional catering and fast-food equipment.",
       description_ar: "متخصصة في معدات التموين الاحترافية والوجبات السريعة.",
-      image: ""
+
     }
   });
 
@@ -240,7 +239,7 @@ async function seedBrands() {
       name_ar: "س.أ.ب",
       description_en: "Italian company producing pizza, bakery, and catering equipment.",
       description_ar: "شركة إيطالية تنتج معدات البيتزا والمخابز والتموين.",
-      image: ""
+
     }
   });
 
@@ -252,7 +251,7 @@ async function seedBrands() {
       name_ar: "سانتوس",
       description_en: "French manufacturer of commercial juicers, blenders, and coffee grinders.",
       description_ar: "شركة فرنسية مصنّعة لماكينات العصير والخلاطات ومطاحن القهوة التجارية.",
-      image: ""
+
     }
   });
 
@@ -264,7 +263,7 @@ async function seedBrands() {
       name_ar: "سكاي رينبو",
       description_en: "Commercial kitchen and catering equipment brand.",
       description_ar: "علامة تجارية لمعدات المطابخ والتموين التجارية.",
-      image: ""
+
     }
   });
 
@@ -276,7 +275,7 @@ async function seedBrands() {
       name_ar: "أونوكس",
       description_en: "Italian manufacturer of professional ovens and cooking solutions.",
       description_ar: "شركة إيطالية مصنعة للأفران الاحترافية وحلول الطهي.",
-      image: ""
+
     }
   });
 
@@ -288,7 +287,7 @@ async function seedBrands() {
       name_ar: "زومكس",
       description_en: "Leader in commercial juicing machines.",
       description_ar: "رائدة في ماكينات العصر التجارية.",
-      image: ""
+
     }
   });
 
@@ -300,7 +299,7 @@ async function seedBrands() {
       name_ar: "بيكرز",
       description_en: "Known for professional kitchen equipment solutions.",
       description_ar: "معروفة بحلول معدات المطابخ الاحترافية.",
-      image: ""
+
     }
   });
 
@@ -312,7 +311,7 @@ async function seedBrands() {
       name_ar: "إم بي إم",
       description_en: "Italian producer of professional cooking equipment for catering.",
       description_ar: "شركة إيطالية منتجة لمعدات الطهي الاحترافية للتموين.",
-      image: ""
+
     }
   });
 
@@ -324,7 +323,7 @@ async function seedBrands() {
       name_ar: "ساب",
       description_en: "Manufacturer of coffee machines and foodservice equipment.",
       description_ar: "مصنّع لماكينات القهوة ومعدات خدمات الطعام.",
-      image: ""
+
     }
   });
 
@@ -336,7 +335,7 @@ async function seedBrands() {
       name_ar: "بيرفكس",
       description_en: "Supplies commercial kitchen solutions.",
       description_ar: "توفر حلول المطابخ التجارية.",
-      image: ""
+
     }
   });
 
@@ -348,7 +347,7 @@ async function seedBrands() {
       name_ar: "إمبيرو",
       description_en: "Turkish brand manufacturing commercial kitchen equipment.",
       description_ar: "علامة تركية تصنّع معدات المطابخ التجارية.",
-      image: ""
+
     }
   });
 
@@ -360,7 +359,7 @@ async function seedBrands() {
       name_ar: "جي تي سي أومني بلند",
       description_en: "Manufacturer of professional blenders for foodservice and hospitality.",
       description_ar: "مصنّع لخلاطات احترافية لخدمات الطعام والضيافة.",
-      image: ""
+
     }
   });
 }
@@ -1718,6 +1717,16 @@ async function seedParentCategories() {
     create: {
       name_en: 'Stainless Steel Items',
       name_ar: 'عناصر الفولاذ المقاوم للصدأ'
+    },
+  });
+
+
+  await prisma.category.upsert({
+    where: { name_en: 'Wire Shelf' },
+    update: {},
+    create: {
+      name_en: "Wire Shelf",
+      name_ar: "رف سلكي",
     },
   });
 }

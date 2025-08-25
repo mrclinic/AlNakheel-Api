@@ -23,13 +23,14 @@ model User {
   cartItems    CartItem[]
   wishlist     WishlistItem[]
 }
+
 model Brand {
   id        Int       @id @default(autoincrement())
   name_en     String    @unique
   name_ar     String    @unique
   description_en String?
   description_ar String?
-  image    String?   // New field for brand image
+  imageUrl    String?   // New field for brand image
   products  Product[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -42,7 +43,7 @@ model Category {
   name_ar     String    @unique
   description_en String?
   description_ar String?
-  image    String?   // New field for brand image
+  imageUrl    String?   // New field for brand image
   products    Product[]
   // Self-referencing relationship for subcategories
   parentId      Int?
@@ -72,7 +73,7 @@ model Product {
   description_en String?
   description_ar String?
   price        Int
-  image    String?   // New field for brand image
+  imageUrl    String?   // New field for brand image
   categoryId   Int?
   category     Category? @relation(fields: [categoryId], references: [id])
   brandId      Int?
@@ -87,13 +88,6 @@ model Product {
   relatedProducts ProductRelation[] @relation("ProductToRelated")
   relatedTo       ProductRelation[] @relation("RelatedToProduct")
 }
-
-/*model Image {
-  id        Int      @id @default(autoincrement())
-  url       String
-  product   Product? @relation(fields: [productId], references: [id])
-  productId Int?
-}*/
 
 model CartItem {
   id        Int      @id @default(autoincrement())

@@ -28,4 +28,9 @@ export class CategoriesService {
   delete(id: number) {
     return this.prisma.category.delete({ where: { id } });
   }
+
+  async addImage(id: number, url: string) {
+    await this.findById(id);
+    return this.prisma.category.update({ where: { id }, data: { imageUrl: url } });
+  }
 }

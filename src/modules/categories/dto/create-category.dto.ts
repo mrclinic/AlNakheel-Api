@@ -20,10 +20,10 @@ export class CreateCategoryDto {
     @IsString()
     description_ar?: string;
 
-    @ApiProperty({ description: 'Category image - Base64 String', required: false })
+    @ApiProperty({ description: 'Category imageUrl', required: false })
     @IsOptional()
     @IsString()
-    image?: string;
+    imageUrl?: string;
 
     @ApiProperty({ description: 'Category Parent', required: false })
     @IsInt()
