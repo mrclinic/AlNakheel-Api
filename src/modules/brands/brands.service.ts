@@ -11,7 +11,13 @@ export class BrandsService {
     }
 
     async findAll(): Promise<any[]> {
-        return this.prisma.brand.findMany();
+        return this.prisma.brand.findMany({
+            include: {
+                _count: {
+                    select: { products: true }, // count how many products each brand has
+                },
+            },
+        });
     }
 
     async findOne(id: number): Promise<any> {

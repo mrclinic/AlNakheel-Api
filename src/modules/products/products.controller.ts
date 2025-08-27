@@ -8,6 +8,7 @@ import { RolesGuard } from '../../common/roles.guard';
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse, ApiOkResponse, ApiParam } from '@nestjs/swagger';
 import { ProductFilterQueryDto, ProductWithRelatedDto, RemoveRelatedProductsBulkDto } from './dto/product.with.related.dto';
 import { AddRelatedProductsBulkDto } from './dto/related-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 
 const uploadDir = process.env.UPLOAD_DIR || './uploads';
 
@@ -65,7 +66,7 @@ export class ProductsController {
   @Patch(':id')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update product (Admin)' })
-  update(@Param('id', ParseIntPipe) id: number, @Body() dto: any) {
+  update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateProductDto) {
     return this.svc.update(id, dto);
   }
 
