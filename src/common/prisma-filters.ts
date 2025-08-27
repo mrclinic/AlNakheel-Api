@@ -50,18 +50,20 @@ export class PrismaFilterService {
         const where: Record<string, any> = {};
 
         for (const key in filters) {
-            if (!filters[key]) continue;
+            if (key !== 'search') {
+                if (!filters[key]) continue;
 
-            const [field, op] = key.split('__'); // e.g., priceCents__gte
+                const [field, op] = key.split('__'); // e.g., priceCents__gte
 
-            if (!op || op === 'eq') {
-                where[field] = filters[key];
-            } else if (op === 'contains') {
-                where[field] = { contains: filters[key], mode: 'insensitive' };
-            } else if (['gte', 'lte', 'gt', 'lt'].includes(op)) {
-                where[field] = { [op]: Number(filters[key]) };
-            } else if (op === 'in') {
-                where[field] = { in: Array.isArray(filters[key]) ? filters[key] : filters[key].split(',') };
+                if (!op || op === 'eq') {
+                    where[field] = filters[key];
+                } else if (op === 'contains') {
+                    where[field] = { contains: filters[key], mode: 'insensitive' };
+                } else if (['gte', 'lte', 'gt', 'lt'].includes(op)) {
+                    where[field] = { [op]: Number(filters[key]) };
+                } else if (op === 'in') {
+                    where[field] = { in: Array.isArray(filters[key]) ? filters[key] : filters[key].split(',') };
+                }
             }
         }
         // Special case: categoryId__in → expand to include subcategories
@@ -74,6 +76,8 @@ export class PrismaFilterService {
         // 🔹 Special case: search keyword across multiple fields (only for Product model)
         if (model === 'product' && filters['search']) {
             const keyword = filters['search'];
+            // remove it so Prisma doesn't complain
+            delete filters['search'];
             where['OR'] = [
                 { name_en: { contains: keyword, mode: 'insensitive' } },
                 { name_ar: { contains: keyword } },
