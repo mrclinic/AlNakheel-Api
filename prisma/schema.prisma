@@ -90,6 +90,7 @@ model Product {
   // Self-referencing many-to-many for related products
   relatedProducts ProductRelation[] @relation("ProductToRelated")
   relatedTo       ProductRelation[] @relation("RelatedToProduct")
+  hasOffer         Boolean        @default(false) // New field
 }
 
 /*model Image {

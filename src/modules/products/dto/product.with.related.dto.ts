@@ -1,7 +1,7 @@
-import { ApiExtraModels, ApiProperty } from "@nestjs/swagger";
+import { ApiExtraModels, ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { RelatedProductDto } from "./related-product.dto";
-import { ArrayNotEmpty, IsArray, IsIn, IsInt, IsOptional, IsString, Min } from "class-validator";
-import { Type } from "class-transformer";
+import { ArrayNotEmpty, IsArray, IsBoolean, IsIn, IsInt, IsOptional, IsString, Min } from "class-validator";
+import { Transform, Type } from "class-transformer";
 import { CreateProductDto } from "./create-product.dto";
 
 /* export class ProductWithRelatedDto {
@@ -111,4 +111,14 @@ export class ProductFilterQueryDto {
     @IsString()
     @ApiProperty({ description: 'Search using keyword', required: false })
     search?: string;
+
+    @ApiPropertyOptional({
+        description: 'An optional boolean parameter',
+        type: Boolean,
+        example: false,
+    })
+    @Transform(({ value }) => value === 'true' || value === true || value === 1 || value === '1')
+    @IsBoolean()
+    @ApiProperty({ description: 'Search using hasOffer', required: false })
+    hasOffer__eq?: boolean;
 }

@@ -8,3 +8,6 @@ npx prisma migrate reset
 npx prisma migrate dev --name init
 
 npm run prisma:seed
+
+
+npx prisma migrate dev --name add_hasOffer_to_product

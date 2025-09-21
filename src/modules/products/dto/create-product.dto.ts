@@ -1,5 +1,6 @@
-import { IsString, IsOptional, IsInt, Min } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { IsString, IsOptional, IsInt, Min, IsBoolean } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
 
 export class CreateProductDto {
   @ApiProperty({ description: 'English Product name' })
@@ -41,4 +42,14 @@ export class CreateProductDto {
   @ApiProperty({ description: 'Product Brand', required: false })
   @IsOptional()
   brandId?: number;
+
+  @ApiPropertyOptional({
+    description: 'Product HasOffer',
+    type: Boolean,
+    example: false,
+  })
+  @Transform(({ value }) => value === 'true' || value === true || value === 1 || value === '1')
+  @IsBoolean()
+  @ApiProperty({ description: 'Product HasOffer', required: false })
+  hasOffer?: boolean;
 }

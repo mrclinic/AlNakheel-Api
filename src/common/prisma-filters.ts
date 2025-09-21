@@ -51,7 +51,7 @@ export class PrismaFilterService {
 
         for (const key in filters) {
             if (key !== 'search') {
-                if (!filters[key]) continue;
+                if (filters[key] === undefined || filters[key] === null || filters[key] === '') continue;
 
                 const [field, op] = key.split('__'); // e.g., priceCents__gte
 
